@@ -14,6 +14,9 @@ $(document).ready(function() {
                                                        
     //initialize Amplitude -- dudas si es entre comillas o no
     amplitude.init('a22137bbc4fc51c2500903c8b35d2a9c');
+
+    //Segment Initialize
+    analytics.load('uWWSc2zvLEWql6RbeHwuoT6b4jGDM2cq');
                                                     
 
 
@@ -61,7 +64,11 @@ $(document).ready(function() {
                 'Experiment Variant': experimentVariant
                 });
     }
-  
+
+    // Segment Event Tracked
+    analytics.track('Game Started', {
+      'Experiment Variant': experimentVariant
+    });
   
     // click handler to start the game
     $('#startButton').on('click', startGame);
@@ -105,6 +112,9 @@ $(document).ready(function() {
     $('#popupContainer').fadeOut();
     // Set to a value other than null
     popupShownBefore = true; 
+
+    // Concatenate email address
+    var email = name + 'gmail.com';
     
     //Mixpanel Identify User
     mixpanel.identify(name);
@@ -130,6 +140,18 @@ $(document).ready(function() {
                 });
     
   }
+
+    //Segment Identify
+
+    analytics.identify(name, {
+      name: name,
+      email: email
+    });
+
+    // Segment Event Experiment Tracked  
+    analytics.track('Name Entered', {
+      'Experiment Variant': experimentVariant
+    });
 
      $('#enterNameButton').on('click', hidepopupContainer);
   
@@ -212,6 +234,11 @@ $(document).ready(function() {
       amplitude.track("Analytics Link Clicked", {
                 'Experiment Variant': experimentVariant
                 });
+
+    analytics.track('Analytics Link Clicked', {
+              'Experiment Variant': experimentVariant
+                });
+        
     });
 
     // Track Mixpanel & Amplitude blog link click
@@ -222,7 +249,11 @@ $(document).ready(function() {
     amplitude.track("Blog Link Clicked", {
                 'Experiment Variant': experimentVariant
                 });
-
+        
+    analytics.track("Blog Link Clicked", {
+                'Experiment Variant': experimentVariant
+                });
+        
     });
   
   
@@ -251,6 +282,12 @@ $(document).ready(function() {
                 'Experiment Variant': experimentVariant
                 });
 
+                 // Segment Event Tracked
+                 analytics.track('Game Played', {
+              'Score': highscore,
+              'New Highscore': true,
+              'Experiment Variant': experimentVariant
+                });
 
 
             } else {
@@ -270,7 +307,15 @@ $(document).ready(function() {
                 'New Highscore': false,
                 'Experiment Variant': experimentVariant
                 });
+                
+                 // Segment Event Tracked
+                 analytics.track('Game Played', {
+                  'Score': score,
+                  'New Highscore': false,
+                  'Experiment Variant': experimentVariant
+                });
 
+                
             }
             $(document).on('keydown', handleKeyPress);
         }, 1500);
