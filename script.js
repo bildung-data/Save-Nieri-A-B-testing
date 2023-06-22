@@ -63,12 +63,14 @@ $(document).ready(function() {
     amplitude.track('Game Started', {
                 'Experiment Variant': experimentVariant
                 });
-    }
+    
 
     // Segment Event Tracked
     analytics.track('Game Started', {
       'Experiment Variant': experimentVariant
     });
+
+    }
   
     // click handler to start the game
     $('#startButton').on('click', startGame);
@@ -139,8 +141,6 @@ $(document).ready(function() {
                 'Experiment Variant': experimentVariant
                 });
     
-  }
-
     //Segment Identify
 
     analytics.identify(name, {
@@ -153,10 +153,9 @@ $(document).ready(function() {
       'Experiment Variant': experimentVariant
     });
 
+  }
+    
      $('#enterNameButton').on('click', hidepopupContainer);
-  
-  
-  
   
   
     // send a new brick from the left or right of the screen and move the stack down
