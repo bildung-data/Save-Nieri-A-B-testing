@@ -40,7 +40,7 @@ $(document).ready(function() {
 
         //if (banner_size !== banner_sizeOld) {
             // Value has changed, do something here
-        }
+        //}
     }
 });
 
