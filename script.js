@@ -18,7 +18,35 @@ $(document).ready(function() {
     //Segment Initialize
     analytics.load('uWWSc2zvLEWql6RbeHwuoT6b4jGDM2cq');
                                                     
+    //FlagSmith Initialize
 
+    flagsmith.init({
+ environmentID: "L3VQjWMAtReKnmqLxy2Hgp",
+ cacheFlags: true, // stores flags in localStorage cache
+ enableAnalytics: true, // See https://docs.flagsmith.com/flag-analytics/ for more info
+ onChange: (oldFlags, params) => {
+  //Occurs whenever flags are changed
+  const { isFromServer } = params; //determines if the update came from the server or local cached storage
+
+  //Check for a feature
+  if (flagsmith.hasFeature('my_cool_feature')) {
+   myCoolFeature();
+  }
+
+  //Or, use the value of a feature
+  const experimentSpeed = flagsmith.getValue('speed');
+
+  //Check whether value has changed
+  const bannerSizeOld = oldFlags['banner_size'] && oldFlags['banner_size'].value;
+  if (bannerSize !== bannerSizeOld) {
+   // Do something!
+  }
+ },
+});
+
+
+
+    
 
     // start (or restart) the game
     function startGame() {
@@ -165,7 +193,7 @@ $(document).ready(function() {
 
         // create a new brick
         var startingSide = Math.random() > 0.5 ? '-' : '';
-      var speed = Math.max(1000, Math.floor(Math.random() * 2000) + 2000 - (score * 20));
+      var speed = Math.max(1000, Math.floor(Math.random() * experimentSpeed) + experimentSpeed - (score * 20));
  //       var speed = Math.max(4000, Math.floor(Math.random() * 8000) + 2000 - (score * 20));
         var additionalColorClass = (score + 1) % 10 === 0 ? 'ten' : (score + 1) % 5 === 0 ? 'five' : '';
         $('.brickContainer').prepend('<div class="brick ' + additionalColorClass + '" style="left: ' + startingSide + '700px;"></div>');
