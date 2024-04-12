@@ -83,7 +83,8 @@ $(document).ready(function() {
     function startGameMixpanel() {
     //Mixpanel Event Tracked
     mixpanel.track("Game Started", {
-                'Experiment Variant': experimentVariant
+                'Experiment Variant': experimentVariant,
+                'Experiment Variant': experimentSpeed
                 });
 
     // Amplitude Event Tracked
