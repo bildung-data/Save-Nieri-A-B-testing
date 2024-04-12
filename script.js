@@ -151,7 +151,8 @@ $(document).ready(function() {
     mixpanel.identify(name);
     //Mixpanel Event Tracked
     mixpanel.track("Name Entered", {
-                'Experiment Variant': experimentVariant
+                'Experiment Variant': experimentVariant,
+                'Speed Variant': experimentSpeed
                 });
     mixpanel.people.set({ $name: name });
     
