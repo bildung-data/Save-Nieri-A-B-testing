@@ -10,7 +10,7 @@ $(document).ready(function() {
     var experimentVariant = "fast";
 
     //initialize Mixpanel
-    mixpanel.init('7fb9a4b04570113d479ec0c7fea0b8e3', {debug: true});
+    mixpanel.init('bd97228d0487e7391e214b1efa2492f3', {debug: true});
                                                        
     //initialize Amplitude -- dudas si es entre comillas o no
     amplitude.init('a22137bbc4fc51c2500903c8b35d2a9c');
