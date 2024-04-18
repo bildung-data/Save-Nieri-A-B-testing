@@ -195,7 +195,7 @@ $(document).ready(function() {
 
         // create a new brick
         var startingSide = Math.random() > 0.5 ? '-' : '';
-      var speed = Math.max(1000, Math.floor(Math.random() * experimentSpeed) + experimentSpeed - (score * 20));
+      var speed = Math.max(1000, Math.floor(Math.random() * 2000) + 2000 - (score * 20));
  //       var speed = Math.max(4000, Math.floor(Math.random() * 8000) + 2000 - (score * 20));
         var additionalColorClass = (score + 1) % 10 === 0 ? 'ten' : (score + 1) % 5 === 0 ? 'five' : '';
         $('.brickContainer').prepend('<div class="brick ' + additionalColorClass + '" style="left: ' + startingSide + '700px;"></div>');
