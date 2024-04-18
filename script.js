@@ -154,7 +154,8 @@ $(document).ready(function() {
                 'Experiment Variant': experimentVariant,
                 'Speed Variant': experimentSpeed
                 });
-    mixpanel.people.set({ $name: name });
+    mixpanel.people.set({ $name: name ,
+                        $vwo_user_id: name});
     
     //Mixpanel Experiment Started
     mixpanel.track('$experiment_started', {'Experiment name': 'Velocidad', 'Variant name': experimentVariant})
